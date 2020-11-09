@@ -100,4 +100,4 @@ async def unBan(ctx,*,member):
 
         await ctx.send(member+" was not found") 
 
-client.run(os.environ("Token"))
+client.run(os.Environ("Token"))
