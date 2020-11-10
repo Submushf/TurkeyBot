@@ -10,7 +10,7 @@ client.remove_command("help")
 
 @client.command()
 @commands.has_role("Giveaways")
-async def gstart(ctx, mins : int, * , prize = str):
+async def gstart(ctx, mins : int, * , prize = "str"):
     embed = discord.Embed(title = "Giveaway!", description = f"{prize}", color = ctx.author.color)
 
     end = datetime.datetime.utcnow() + datetime.timedelta(seconds= mins*60)
