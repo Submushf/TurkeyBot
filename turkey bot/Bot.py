@@ -36,7 +36,7 @@ async def gstart(ctx, mins : int, * , prize = "str"):
 @client.event
 async def on_ready():
     await client.change_presence(status = discord.Status.idle, activity= discord.Activity(
-        type= discord.ActivityType.playing, name= "🦃Catch the Turkey | T!help" 
+        type= discord.ActivityType.watching, name= "T!help" 
     )) 
     print("bot is ready") 
 
