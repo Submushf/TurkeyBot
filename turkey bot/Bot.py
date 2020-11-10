@@ -31,7 +31,7 @@ async def gstart(ctx, mins : int, * , prize = "str"):
 
     winner = random.choice(users)
 
-    await ctx.send(f"Congragulations! {winner.mention} won {prize}!")
+    await ctx.channel.send(f"Congragulations! {winner.mention} won {prize}!")
 
 @client.event
 async def on_ready():
