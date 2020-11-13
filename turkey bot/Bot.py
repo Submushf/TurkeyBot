@@ -81,9 +81,9 @@ async def giveaway(ctx):
 
     embed.add_field(name= "Hosted by:", value= ctx.author.mention)
 
-    embed.set_footer(text= f"Ends {answers[1]} from now!")
+    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776778089815998484/turkeybot-removebg-preview.png") 
 
-    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768122587174797364/774984074778378260/turkeybot-removebg-preview.png") 
+    embed.set_footer(text= f"Ends {answers[1]} from now!")
 
     my_msg = await channel.send(embed = embed)
 
@@ -105,10 +105,9 @@ async def giveaway(ctx):
 async def help(ctx):
     embed = discord.Embed(title = "Commands" , color = discord.Colour.green()) 
     embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= False)
-    embed.add_field(name= "🛠️ unban @mention" , value= "Unbans the mentioned User. " , inline= False)
     embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= False) 
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Owner) " , inline= False) 
-    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768122587174797364/774984074778378260/turkeybot-removebg-preview.png") 
+    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776778089815998484/turkeybot-removebg-preview.png") 
     embed.set_footer(text= 'Prefixs- t!, more commands coming soon' ) 
     await ctx.send(embed=embed)
 
