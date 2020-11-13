@@ -94,7 +94,6 @@ async def giveaway(ctx):
 
     my_msg = await channel.fetch_message(my_msg.id)
 
-    users = await my_msg.reaction[0].users().faltten() 
     users.pop(users.index(client.user)) 
 
     winner = random.choice(users)
