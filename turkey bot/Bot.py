@@ -105,6 +105,7 @@ async def giveaway(ctx):
 async def help(ctx):
     embed = discord.Embed(title = "Commands" , color = discord.Colour.green()) 
     embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= False)
+    embed.add_field(name= "🧹 clear" , value= "-clear messages " , inline= False) 
     embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= False) 
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Owner) " , inline= False) 
     embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776778089815998484/turkeybot-removebg-preview.png") 
