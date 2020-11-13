@@ -92,10 +92,10 @@ async def giveaway(ctx):
 
     await asyncio.sleep(time)
 
-    new_msg = await channel.fetch_message(my_msg.id)
+    my_msg = await channel.fetch_message(my_msg.id)
 
-    users = await new_msg.reaction[0].users().faltten() 
-    users.pop(users.index(client.user))
+    users = await my_msg.reaction[0].users().faltten() 
+    users.pop(users.index(client.user)) 
 
     winner = random.choice(users)
 
