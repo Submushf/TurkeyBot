@@ -3,7 +3,6 @@ from discord.ext import commands
 import datetime
 import random
 import asyncio
-import os
 
 client = commands.Bot(command_prefix= "t!") 
 client.remove_command("help")
@@ -92,9 +91,11 @@ async def giveaway(ctx):
 
     await asyncio.sleep(time)
 
-    my_msg = await channel.fetch_message(my_msg.id)
+    new_msg = await channel.fetch_message(my_msg.id)
 
-    users.pop(users.index(client.user)) 
+    users = await new_msg.reactions[0].users().flatten()
+    users.pop(users.index(client.user))
+    
 
     winner = random.choice(users)
 
