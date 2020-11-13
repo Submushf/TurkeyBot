@@ -81,7 +81,7 @@ async def giveaway(ctx):
 
     embed.add_field(name= "Hosted by:", value= ctx.author.mention)
 
-    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776778089815998484/turkeybot-removebg-preview.png") 
+    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776782057502146560/March_2020_Photography_Giveaway_Eight_Awesome_Prizes_You_Can_Win.jpg") 
 
     embed.set_footer(text= f"Ends {answers[1]} from now!")
 
