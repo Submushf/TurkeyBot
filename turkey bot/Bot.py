@@ -105,7 +105,6 @@ async def giveaway(ctx):
 async def help(ctx):
     embed = discord.Embed(title = "Commands" , color = discord.Colour.green()) 
     embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= False)
-    embed.add_field(name= "🧹 clear" , value= "-clear messages " , inline= False) 
     embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= False) 
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Owner) " , inline= False) 
     embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776778089815998484/turkeybot-removebg-preview.png") 
@@ -115,10 +114,6 @@ async def help(ctx):
 @client.command()
 async def ping(ctx):
     await ctx.send("pong!")
-
-@client.command(aliases = ['c'])
-async def clear(ctx, amount=2):
-    await ctx.channel.purge(limit = amount)
 
 @client.command(aliases=['user','info']) 
 @commands.has_permissions(kick_members= True)
