@@ -84,6 +84,8 @@ async def giveaway(ctx):
 
     embed.set_footer(text= f"Ends {answers[1]} from now!")
 
+    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768122587174797364/774984074778378260/turkeybot-removebg-preview.png") 
+
     my_msg = await channel.send(embed = embed)
 
     await my_msg.add_reaction("🎉")
@@ -97,7 +99,7 @@ async def giveaway(ctx):
 
     winner = random.choice(users)
 
-    await channel.send(f"congratulations! {winner.mention} won {prize}!")
+    await ctx.send(f"congratulations! {winner.mention} won {prize}!")
 
 @client.command()
 async def help(ctx):
