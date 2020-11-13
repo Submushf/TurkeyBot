@@ -15,35 +15,6 @@ async def on_ready():
     )) 
     print("bot is ready")
 
-@client.command()
-async def help(ctx):
-    embed = discord.Embed(title = "Commands" , color = discord.Colour.green()) 
-    embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= True)
-    embed.add_field(name= "📂 clear {# of msg}" , value= "-Deletes the given amount of messages. " , inline= True)
-    embed.add_field(name= "🦵 kick @mention" , value= "-Kicks the mentioned User. " , inline= True)
-    embed.add_field(name= "🔨 ban @mention" , value= "-Bans the mentioned user. " , inline= True)
-    embed.add_field(name= "🛠️ unban @mention" , value= "Unbans the mentioned User. " , inline= True)
-    embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= True) 
-    embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. " , inline= True) 
-    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768122587174797364/774984074778378260/turkeybot-removebg-preview.png") 
-    embed.set_footer(text= 'Prefixs- t!, more commands coming soon' ) 
-    await ctx.send(embed=embed)
-
-@client.command()
-async def ping(ctx):
-    await ctx.send("pong!")
-
-@client.command(aliases=['user','info']) 
-@commands.has_permissions(kick_members= True)
-async def minfo(ctx, member : discord.Member):
-    embed = discord.Embed(title= member.name , description = member.mention , color = discord.Colour.green()) 
-    embed.add_field(name = "ID" , value = member.id , inline = True)
-    embed.set_thumbnail(url = member.avatar_url) 
-    embed.set_footer(icon_url= ctx.author.avatar_url, text= f"Requested by {ctx.author.name }")
-    await ctx.send(embed = embed) 
-
-
-
 def convert(time):
     pos = ["s","m","h","d"]
 
@@ -61,15 +32,13 @@ def convert(time):
     return val * time_dict[unit]
 
 @client.command()
-@commands.has_permissions(kick_members = True)
+@commands.has_role("Owner")
 async def giveaway(ctx):
     await ctx.send("let's start with this giveaway! Answer this few questions within 15 seconds!") 
 
-    questions = [
-        "which channel whould it be hosted in?",
+    questions = ["which channel whould it be hosted in?",
         "what should be the duration of the giveaway? s|m|h|d",
-        "what is the prize of the giveaway?"
-    ]
+        "what is the prize of the giveaway?"]
 
     answers = []
 
@@ -129,6 +98,33 @@ async def giveaway(ctx):
 
     await channel.send(f"Congragulations! {winner.mention} won {prize}!")
 
+
+@client.command()
+async def help(ctx):
+    embed = discord.Embed(title = "Commands" , color = discord.Colour.green()) 
+    embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= True)
+    embed.add_field(name= "📂 clear {# of msg}" , value= "-Deletes the given amount of messages. " , inline= True)
+    embed.add_field(name= "🦵 kick @mention" , value= "-Kicks the mentioned User. " , inline= True)
+    embed.add_field(name= "🔨 ban @mention" , value= "-Bans the mentioned user. " , inline= True)
+    embed.add_field(name= "🛠️ unban @mention" , value= "Unbans the mentioned User. " , inline= True)
+    embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= True) 
+    embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. " , inline= True) 
+    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768122587174797364/774984074778378260/turkeybot-removebg-preview.png") 
+    embed.set_footer(text= 'Prefixs- t!, more commands coming soon' ) 
+    await ctx.send(embed=embed)
+
+@client.command()
+async def ping(ctx):
+    await ctx.send("pong!")
+
+@client.command(aliases=['user','info']) 
+@commands.has_permissions(kick_members= True)
+async def minfo(ctx, member : discord.Member):
+    embed = discord.Embed(title= member.name , description = member.mention , color = discord.Colour.green()) 
+    embed.add_field(name = "ID" , value = member.id , inline = True)
+    embed.set_thumbnail(url = member.avatar_url) 
+    embed.set_footer(icon_url= ctx.author.avatar_url, text= f"Requested by {ctx.author.name }")
+    await ctx.send(embed = embed) 
 
 @client.command(aliases=['c'])
 @commands.has_permissions(manage_messages = True)
