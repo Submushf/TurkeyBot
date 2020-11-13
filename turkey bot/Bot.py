@@ -31,7 +31,7 @@ def convert(time):
     return val * time_dict[unit]
 
 @client.command()
-@commands.has_role("Owner")
+@commands.has_role("Giveaway hoster")
 async def giveaway(ctx):
     await ctx.send("Lets start with this giveaway! Answer this question within 15 seconds!")
 
@@ -106,7 +106,7 @@ async def help(ctx):
     embed = discord.Embed(title = "Commands" , color = discord.Colour.green()) 
     embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= False)
     embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= False) 
-    embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Owner) " , inline= False) 
+    embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway hoster) " , inline= False) 
     embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776778089815998484/turkeybot-removebg-preview.png") 
     embed.set_footer(text= 'Prefixs- t!, more commands coming soon' ) 
     await ctx.send(embed=embed)
