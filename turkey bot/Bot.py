@@ -99,7 +99,7 @@ async def giveaway(ctx):
 
     winner = random.choice(users)
 
-    await ctx.send(f"congratulations! {winner.mention} won {prize}!")
+    await channel.send(f"congratulations! {winner.mention} won {prize}!")
 
 @client.command()
 async def help(ctx):
