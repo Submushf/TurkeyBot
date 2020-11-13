@@ -115,6 +115,10 @@ async def help(ctx):
 async def ping(ctx):
     await ctx.send("pong!")
 
+@client.command(aliases = ['c'])
+async def clear(ctx, amount=2):
+    await ctx.channel.purge(limit = amount)
+
 @client.command(aliases=['user','info']) 
 @commands.has_permissions(kick_members= True)
 async def minfo(ctx, member : discord.Member):
