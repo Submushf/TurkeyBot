@@ -143,6 +143,7 @@ async def balance(ctx):
 	bank_amt = users[str(user.id)]["bank"]
 
 	em = discord.Embed(title = f"{ctx.author.name}'s  balance", color = 0x7c7979)
+	em.set_thumbnail(url = "https://media.discordapp.net/attachments/768122587174797364/777542741575335985/Daco_4263670.png?width=481&height=481")
 	em.add_field(name = "Wallet balance", value = wallet_amt)
 	em.add_field(name = "Bank balance", value = bank_amt)
 	await ctx.send(embed= em)
