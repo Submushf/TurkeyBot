@@ -3,6 +3,7 @@ from discord.ext import commands
 import datetime
 import random
 import asyncio
+import json
 
 client = commands.Bot(command_prefix= "t!") 
 client.remove_command("help")
@@ -31,7 +32,7 @@ def convert(time):
     return val * time_dict[unit]
 
 @client.command()
-@commands.has_role("Giveaway hoster")
+@commands.has_role("Giveaway manager")
 async def giveaway(ctx):
     await ctx.send("Lets start with this giveaway! Answer this question within 15 seconds!")
 
@@ -77,7 +78,7 @@ async def giveaway(ctx):
 
     await ctx.send(f"The Giveaway will be in {channel.mention} and will last {answers[1]}.")
 
-    embed = discord.Embed(title = "Giveaway", description = f"{prize}", color = 0xFF8000) 
+    embed = discord.Embed(title = "Giveaway", description = f"{prize}", color = 0xFF8000)
 
     embed.add_field(name= "Hosted by:", value= ctx.author.mention)
 
@@ -101,13 +102,21 @@ async def giveaway(ctx):
 
     await channel.send(f"congratulations! {winner.mention} won {prize}!")
 
+
 @client.command()
 async def help(ctx):
     embed = discord.Embed(title = "Commands" , color = 0xFF8000) 
     embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= False)
     embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= False) 
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway hoster) " , inline= False) 
-    embed.set_thumbnail(url ="https://cdn.discordapp.com/attachments/768503085412253707/776778089815998484/turkeybot-removebg-preview.png") 
+    embed = discord.Embed(title = "economy") 
+    embed.add_field(name= "📊 balance " , value= "-Check your account balance " , inline= True)
+    embed.add_field(name= "🤏 beg " , value= "-Beg for money " , inline= True)    
+    embed.add_field(name= "🏦 deposit " , value= "-deposit your money " , inline= True)  
+    embed.add_field(name= "🤐 rob " , value= "-Rob money from anyone in the server " , inline= True)  
+    embed.add_field(name= "📩 send " , value= "-send money to anyone in the server " , inline= True) 
+    embed.add_field(name= "💸 withdraw " , value= "-withdraw money from your IDK " , inline= True)
+    embed.add_field(name= "🍻 bet" , value= "-Bet money  " , inline= True)  
     embed.set_footer(text= 'Prefixs- t!, more commands coming soon' ) 
     await ctx.send(embed=embed)
 
@@ -123,5 +132,194 @@ async def minfo(ctx, member : discord.Member):
     embed.set_thumbnail(url = member.avatar_url) 
     embed.set_footer(icon_url= ctx.author.avatar_url, text= f"Requested by {ctx.author.name }")
     await ctx.send(embed = embed) 
+
+
+@client.command()
+async def balance(ctx):
+	await open_account(ctx.author)
+	user = ctx.author
+	users = await get_bank_data()
+
+	wallet_amt = users[str(user.id)]["wallet"]
+	bank_amt = users[str(user.id)]["bank"]
+
+	em = discord.Embed(title = f"{ctx.author.name}'s  balance", color = 0x7c7979)
+	em.add_field(name = "Wallet balance", value = wallet_amt)
+	em.add_field(name = "Bank balance", value = bank_amt)
+	await ctx.send(embed= em)
+
+@client.command()
+async def beg(ctx):	
+	await open_account(ctx.author)
+
+	users = await get_bank_data()
+
+	user = ctx.author
+
+	earnings = random.randrange(20)
+
+	await ctx.send(f"someone gave you {earnings} coins!!")
+
+
+	users[str(user.id)]["wallet"] += earnings
+	
+	with open("mainbank.json","w") as f:
+		json.dump(users,f) 
+
+
+@client.command()
+async def withdraw(ctx,amount = None):
+	await open_account(ctx.author)
+
+	if amount == None:
+		await ctx.send("please enter the amount")
+		return
+
+	bal = await update_bank(ctx.author)
+
+	amount = int(amount)
+	if amount>bal[1]:
+		await ctx.send("you dont have that much money!")
+		return
+	if amount<0:
+		await ctx.send("amount must be positive!")
+		return
+
+	await update_bank(ctx.author,amount)
+	await update_bank(ctx.author,-1*amount, "bank")
+
+	await ctx.send(f"You withdrew {amount} coins!")
+
+@client.command()
+async def deposit(ctx,amount = None):
+	await open_account(ctx.author)
+
+	if amount == None:
+		await ctx.send("please enter the amount")
+		return
+
+	bal = await update_bank(ctx.author)
+
+	amount = int(amount)
+	if amount>bal[0]:
+		await ctx.send("you dont have that much money!")
+		return
+	if amount<0:
+		await ctx.send("amount must be positive!")
+		return
+
+	await update_bank(ctx.author,-1*amount)
+	await update_bank(ctx.author,amount, "bank")
+
+	await ctx.send(f"You deposited {amount} coins!")
+
+@client.command()
+async def send(ctx,member:discord.Member,amount = None):
+	await open_account(ctx.author)
+	await open_account(member)
+
+	if amount == None:
+		await ctx.send("please enter the amount")
+		return
+
+	bal = await update_bank(ctx.author)
+
+	amount = int(amount)
+	if amount>bal[1]:
+		await ctx.send("you dont have that much money!")
+		return
+	if amount<0:
+		await ctx.send("amount must be positive!")
+		return
+
+	await update_bank(ctx.author,-1*amount, "bank")
+	await update_bank(member,amount, "bank")
+
+	await ctx.send(f"You gave {amount} coins!")
+
+@client.command()
+async def rob(ctx,member:discord.Member):
+	await open_account(ctx.author)
+	await open_account(member)
+
+	bal = await update_bank(member)
+
+	if bal[0]<100:
+		await ctx.send("Its useless to rob this guy")
+		return
+
+	earnings = random.randrange(0, bal[0])
+
+	await update_bank(ctx.author,earnings)
+	await update_bank(member,-1*earnings)
+
+	await ctx.send(f"You robbed and got {earnings} coins!") 
+
+
+@client.command()
+async def bet(ctx,amount = None):
+	await open_account(ctx.author)
+
+	if amount == None:
+		await ctx.send("please enter the amount")
+		return
+
+	bal = await update_bank(ctx.author)
+
+	amount = int(amount)
+	if amount>bal[0]:
+		await ctx.send("you dont have that much money!")
+		return
+	if amount<0:
+		await ctx.send("amount must be positive!")
+		return
+
+	final = []
+	for i in range(3):
+		i = random.choice(["🏦","🚀","🌪️"])
+
+		final.append(i)
+
+	await ctx.send(str(final))
+
+	if final[0] == final[1] or final[0] == final[2] or final[2] == final[1]:
+		await update_bank(ctx.author,2*amount)
+		await ctx.send("You won!")
+	else:
+		await update_bank(ctx.author,-1*amount)
+		await ctx.send("You Lost.")
+
+async def open_account(user):
+
+	users = await get_bank_data()
+
+	if str(user.id) in users:
+		return False
+	else:
+		users[str(user.id)] = {}
+		users[str(user.id)]["wallet"] = 0 
+		users[str(user.id)]["bank"] = 0
+
+	with open("mainbank.json","w") as f:
+		json.dump(users,f) 
+	return True
+
+async def get_bank_data():
+	with open("mainbank.json","r") as f:
+		users = json.load(f)
+
+	return users
+
+async def update_bank(user,change = 0,mode = "wallet"):
+	users = await get_bank_data()
+
+	users[str(user.id)][mode] += change
+
+	with open("mainbank.json","w") as f:
+		json.dump(users,f) 
+	
+	bal = [users[str(user.id)]["wallet"],users[str(user.id)]["bank"]]	
+	return bal
+
 
 client.run("Nzc0NTM4NTA3MzE0MDAzOTc5.X6ZPMg.MS4bbLnG4l_7xjlKHrI0UYtq8n8")
