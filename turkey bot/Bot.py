@@ -109,7 +109,7 @@ async def help(ctx):
     embed.add_field(name= "🏓 ping" , value= "-reply's pong! . " , inline= False)
     embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= False) 
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway hoster) " , inline= False) 
-    embed = discord.Embed(title = "economy") 
+    embed.add_field(name= "💰 Economy", value= ".") 
     embed.add_field(name= "📊 balance " , value= "-Check your account balance " , inline= True)
     embed.add_field(name= "🤏 beg " , value= "-Beg for money " , inline= True)    
     embed.add_field(name= "🏦 deposit " , value= "-deposit your money " , inline= True)  
