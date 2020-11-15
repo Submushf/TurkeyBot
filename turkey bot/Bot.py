@@ -110,7 +110,7 @@ async def help(ctx):
     embed.add_field(name= "📒 minfo" , value= "-shows info about the mentioned user . " , inline= True) 
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway hoster) " , inline= True) 
     embed.add_field(name= "Economy", value= ".", inline = True)
-    embed.add_field(name= "📊 balance " , value= "-Check your account balance " , inline= True)
+    embed.add_field(name= "📊 balance " , value= "-Check your account balance " , inline= False)
     embed.add_field(name= "🤏 beg " , value= "-Beg for money " , inline= True)    
     embed.add_field(name= "🏦 deposit " , value= "-deposit your money " , inline= True)  
     embed.add_field(name= "🤐 rob " , value= "-Rob money from anyone in the server " , inline= True)  
