@@ -358,16 +358,6 @@ async def update_bank(user,change = 0,mode = "wallet"):
 	bal = [users[str(user.id)]["wallet"],users[str(user.id)]["bank"]]	
 	return bal
 
-@client.command(aliases=['user','info']) 
-@commands.has_permissions(kick_members= True)
-async def uinfo(ctx, member : discord.Member):
-    embed = discord.Embed(title= member.name , description = member.mention , color = 0x7c7979 ) 
-    embed.add_field(name = "ID" , value = member.id , inline = True)
-    embed.set_thumbnail(url = member.avatar_url) 
-    embed.set_footer(icon_url= ctx.author.avatar_url, text= f"Requested by {ctx.author.name }")
-    await ctx.send(embed = embed)
-
-
 mainshop = [{"name":"Watch","price":100,"description":"Time"},
             {"name":"Laptop","price":1000,"description":"Work"},
             {"name":"PC","price":10000,"description":"Gaming"}]
