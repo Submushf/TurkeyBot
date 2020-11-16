@@ -514,7 +514,6 @@ async def sell_this(user,item_name,amount,price = None):
 
     bal = await update_bank(user)
 
-
     try:
         index = 0
         t = None
