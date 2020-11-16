@@ -111,6 +111,7 @@ async def help(ctx):
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway hoster) " , inline= True) 
     embed.add_field(name= "📊 balance " , value= "-Check your account balance " , inline= True)
     embed.add_field(name= "🤏 beg " , value= "-Beg for money " , inline= True)    
+    embed.add_field(name= "👨‍💼 work " , value= "-work for money " , inline= True)        
     embed.add_field(name= "🏦 deposit " , value= "-deposit your money " , inline= True)  
     embed.add_field(name= "🤐 rob " , value= "-Rob money from anyone in the server " , inline= True)  
     embed.add_field(name= "📩 send " , value= "-send money to anyone in the server " , inline= True) 
@@ -149,7 +150,27 @@ async def balance(ctx):
 	await ctx.send(embed= em)
 
 @client.command()
+@commands.cooldown(1, 30, commands.BucketType.user)
 async def beg(ctx):	
+	await open_account(ctx.author)
+
+	users = await get_bank_data()
+
+	user = ctx.author
+
+	earnings = random.randrange(20)
+
+	await ctx.send(f"someone gave you {earnings} coins!!")
+
+
+	users[str(user.id)]["wallet"] += earnings
+	
+	with open("mainbank.json","w") as f:
+		json.dump(users,f) 
+
+@client.command()
+@commands.cooldown(1, 30, commands.BucketType.user)
+async def work(ctx):	
 	await open_account(ctx.author)
 
 	users = await get_bank_data()
@@ -238,6 +259,7 @@ async def send(ctx,member:discord.Member,amount = None):
 	await ctx.send(f"You gave {amount} coins!")
 
 @client.command()
+@commands.cooldown(1, 60, commands.BucketType.user)
 async def rob(ctx,member:discord.Member):
 	await open_account(ctx.author)
 	await open_account(member)
@@ -257,6 +279,7 @@ async def rob(ctx,member:discord.Member):
 
 
 @client.command()
+@commands.cooldown(1, 40, commands.BucketType.user)
 async def bet(ctx,amount = None):
 	await open_account(ctx.author)
 
