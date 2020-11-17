@@ -295,7 +295,7 @@ async def rob(ctx,member:discord.Member):
 
 @client.command()
 @commands.cooldown(1, 100, commands.BucketType.user)
-async def thanos_snap(ctx,member:discord.Member):
+async def thanosnap(ctx,member:discord.Member):
 	await open_account(ctx.author)
 	await open_account(member)
 
