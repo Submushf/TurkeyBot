@@ -4,6 +4,7 @@ import datetime
 import random
 import asyncio
 import json
+import os
 
 client = commands.Bot(command_prefix= "t!") 
 client.remove_command("help")
@@ -557,4 +558,4 @@ async def leaderboard(ctx,x = 1):
 
     await ctx.send(embed = em)
 
-client.run("Nzc0NTM4NTA3MzE0MDAzOTc5.X6ZPMg.MS4bbLnG4l_7xjlKHrI0UYtq8n8")
+client.run(os.environ['token']) 
