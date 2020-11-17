@@ -293,6 +293,25 @@ async def rob(ctx,member:discord.Member):
 
 	await ctx.send(f"You robbed and got {earnings} coins!") 
 
+@client.command()
+@commands.cooldown(1, 100, commands.BucketType.user)
+async def thanos_snap(ctx,member:discord.Member):
+	await open_account(ctx.author)
+	await open_account(member)
+
+	bal = await update_bank(member)
+
+	if bal[0]<100:
+		await ctx.send("Its useless to rob this guy")
+		return
+
+	earnings = random.randrange(0, bal[0])
+
+	await update_bank(ctx.author,earnings)
+	await update_bank(member,-1*earnings)
+
+	await ctx.send(f"You robbed and got {earnings} coins!") 
+
 
 @client.command()
 @commands.cooldown(1, 30, commands.BucketType.user)
