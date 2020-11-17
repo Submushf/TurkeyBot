@@ -302,7 +302,7 @@ async def thanosnap(ctx,member:discord.Member):
 	bal = await update_bank(member)
 
 	if bal[0]<100:
-		await ctx.send("Its useless to rob this guy")
+		await ctx.send("Its you cant snap this legend!")
 		return
 
 	earnings = random.randrange(0, bal[0])
@@ -310,7 +310,7 @@ async def thanosnap(ctx,member:discord.Member):
 	await update_bank(ctx.author,earnings)
 	await update_bank(member,-1*earnings)
 
-	await ctx.send(f"You robbed and got {earnings} coins!") 
+	await ctx.send(f"You snaped him to the other world!") 
 
 
 @client.command()
