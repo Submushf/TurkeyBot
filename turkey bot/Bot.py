@@ -275,6 +275,7 @@ async def send(ctx,member:discord.Member,amount = None):
 	await ctx.send(f"You gave {amount} coins!")
 
 @client.command()
+@commands.cooldown(1, 100, commands.BucketType.user)
 async def rob(ctx,member:discord.Member):
 	await open_account(ctx.author)
 	await open_account(member)
