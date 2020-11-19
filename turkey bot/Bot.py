@@ -110,7 +110,7 @@ async def help(ctx):
     embed.add_field(name= "📒 help" , value= "-shows this message. " , inline= False) 
     embed.add_field(name= "💰 ecohelp" , value= "-shows all the Economy commands. " , inline= False)
     embed.add_field(name= "🛠️ minfo" , value= "-shows info about the mentioned user . " , inline= False) 
-    embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway hoster) " , inline= False) 
+    embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway manager) " , inline= False) 
     embed.set_footer(text= 'Prefixs- t!' ) 
     await ctx.send(embed=embed)
 
