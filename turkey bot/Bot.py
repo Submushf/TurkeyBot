@@ -110,6 +110,7 @@ async def help(ctx):
     embed.add_field(name= "📒 help" , value= "-shows this message. " , inline= False) 
     embed.add_field(name= "💰 ecohelp" , value= "-shows all the Economy commands. " , inline= False)
     embed.add_field(name= "🛠️ minfo" , value= "-shows info about the mentioned user . " , inline= False) 
+    embed.add_field(name= "✋ suggest" , value= "-Suggest's random Stuff " , inline= False)
     embed.add_field(name= "🎉 giveaway" , value= "-start a giveaway. required role (Giveaway manager) " , inline= False) 
     embed.set_footer(text= 'Prefixs- t!' ) 
     await ctx.send(embed=embed)
@@ -577,5 +578,23 @@ async def leaderboard(ctx,x = 1):
             index += 1
 
     await ctx.send(embed = em)
+
+cmd = [
+    "https://www.youtube.com/watch?v=Zszs7Jftv-M","https://www.youtube.com/watch?v=JBDt6ddgsNU","https://www.youtube.com/watch?v=qMmhnOQx7QE","https://www.youtube.com/watch?v=K8oAnM6p2HU&t=170s","https://www.youtube.com/watch?v=CUJFROAW5yA&list=RDCUJFROAW5yA&start_radio=1","https://www.youtube.com/watch?v=7xnW42MeCEc",
+    "https://www.youtube.com/watch?v=lLvoZ5Wsf94","","https://youtu.be/3z4Hzo9UmrQ","https://www.youtube.com/watch?v=qLACUEjyHjw", "https://youtu.be/c6D8v6DhKc4", "https://youtu.be/2nVPFdqejD0", "https://youtu.be/lhSjYT7pWkw"
+    ,"https://youtu.be/2nVPFdqejD0","https://www.youtube.com/watch?v=vdRYJPnBGVU","https://www.youtube.com/watch?v=DODLEX4zzLQ","https://www.youtube.com/watch?v=sKDzYQuPBsY","https://www.digitaltrends.com/web/funniest-youtube-videos/","https://www.youtube.com/watch?v=4d7XuZg5gkk","https://www.youtube.com/watch?v=QycJiYBPNIU","https://www.youtube.com/watch?v=RNFpMDXTCU8",
+    "https://www.youtube.com/watch?v=9DWDJmC1Pkw","https://www.youtube.com/watch?v=VQJ40f_JdOI","https://www.youtube.com/watch?v=OqT8QK84KBc","https://www.youtube.com/watch?v=x-brv0EaPuE","https://www.youtube.com/watch?v=Zo_Y-n__Cbc",
+    "https://www.youtube.com/watch?v=DrwYZCN2__g","https://www.youtube.com/watch?v=06kqZVHCSIs","https://www.youtube.com/watch?v=8oU0LAKoAL0","https://www.youtube.com/watch?v=J5Rzr-GL50Y","https://www.gq.com/story/no-cry-challenge-sad-internet-videos",
+    "https://www.youtube.com/watch?v=tlvO3LnPQR8","https://www.youtube.com/watch?v=GfFVJyDVZuQ&list=WL&index=22&t=112s","https://www.youtube.com/watch?v=f0j--Y6G4Fg&list=WL&index=21&t=10s", "https://www.youtube.com/watch?v=Kv-OdJLhfFI","https://www.youtube.com/watch?v=Kv-OdJLhfFI","https://www.youtube.com/watch?v=OYMJNDB-rx0","https://www.youtube.com/watch?v=fxO4DCEw1FY",
+    "https://www.youtube.com/watch?v=ftsBRXe_lhs","https://www.youtube.com/watch?v=HJjkw1kIgY0","https://www.youtube.com/watch?v=zBG8wsX3NkM"
+]
+
+@client.command(aliases=['s']) 
+@commands.cooldown(1, 43200, commands.BucketType.user)
+async def suggest(ctx):
+    suggested =  random.choice(cmd)
+
+    await ctx.send(f"**Today's suggestion's : {suggested}**")
+    await ctx.send(f"Next suggestion available in 12 hours") 
 
 client.run(os.environ['token']) 
