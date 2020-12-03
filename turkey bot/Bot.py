@@ -6,7 +6,7 @@ import asyncio
 import json
 import os
 
-client = commands.Bot(command_prefix= "t!") 
+client = commands.Bot(command_prefix= "t!", intents = discord.Intents.all())  
 client.remove_command("help")
 
 @client.event
