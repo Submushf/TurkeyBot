@@ -17,7 +17,7 @@ class Help(commands.Cog):
         helpembed= discord.Embed(
             title= "Help Command" , color = 0x07C9F5 
         )
-        helpembed.set_thumbnail(url= ctx.avatar_url) 
+        helpembed.set_thumbnail(url= "https://cdn.discordapp.com/attachments/781888173286227970/786850459317960714/ezgif.com-gif-maker.png") 
 
         cogs = [c for c in self.client.cogs.keys()]
 
