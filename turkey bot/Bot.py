@@ -53,7 +53,7 @@ async def gstart(ctx):
 
     questions = [
         "which channel should it be hosted in?", 
-        "what should be the duration of the giveaway? s|m|h|d",
+        "what should be the duration of the giveaway? s |m | h | d",
         "what is the prize of the giveaway?"
     ]
 
