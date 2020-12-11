@@ -118,7 +118,7 @@ async def gstart(ctx):
     await channel.send(f"congratulations! {winner.mention} won {prize}!")
 
 
-@client.command(aliases=['c']) 
+@client.command(aliases=['dh']) 
 async def Dhelp(ctx):
     embed = discord.Embed(title = "Commands" , color = 0xFF8000) 
     embed.add_field(name= "📒 help" , value= "-shows this message. " , inline= False)  
