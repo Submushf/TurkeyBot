@@ -58,7 +58,7 @@ class Help(commands.Cog):
     @commands.command(description = "Show's The bot status.", aliases = ['st'])
     async def Status(self, ctx):
         embed = discord.Embed(titile = "Status", color = 0x07C9F5) 
-        embed.add_field(name= "Status", value="-Online", inline=True) 
+        embed.add_field(name= "status", value="-Online", inline=True) 
         embed.set_image(url= 'https://media.discordapp.net/attachments/781888173286227970/786908540471869440/3863_gearz.gif') 
         await ctx.send(embed=embed)
 
