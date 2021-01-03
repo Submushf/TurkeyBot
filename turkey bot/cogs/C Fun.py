@@ -27,25 +27,25 @@ class Fun(commands.Cog):
                 r = r["body"][0]
                 await ctx.send(f"**{r['setup']}**\n||{r['punchline']}||")
 
-    @commands.command(description = "Pat a user with a Gif")
+    @commands.command(aliases=['p'],description = "Pat a user with a Gif")
     async def pat(self, ctx):
         embed = discord.Embed(color = 0x07C9F5 )
         embed.set_image(url= 'https://media.giphy.com/media/5tmRHwTlHAA9WkVxTU/giphy.gif')
         await ctx.send(embed=embed)
 
-    @commands.command(description = "congratulate a user with a Gif")
+    @commands.command(aliases=['c'],description = "congratulate a user with a Gif")
     async def congrats(self, ctx):
         embed = discord.Embed(color = 0x07C9F5)
         embed.set_image(url= 'https://media.giphy.com/media/g9582DNuQppxC/giphy.gif')
         await ctx.send(embed=embed)
 
-    @commands.command(description = "Kick a user with a Gif")
+    @commands.command(aliases=['k'], description = "Kick a user with a Gif")
     async def Kick(self, ctx):
         embed = discord.Embed(color = 0x07C9F5)
         embed.set_image(url= 'https://media.giphy.com/media/u2LJ0n4lx6jF6/giphy.gif')
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=['s']) 
+    @commands.command(aliases=['s'],description = "Suggest's video's to warm up") 
     @commands.cooldown(1, 43200, commands.BucketType.user)
     async def suggest(self,ctx):
         suggested =  random.choice(cmd)
