@@ -55,12 +55,12 @@ class Moderation(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(
-        name="channelstats",
+        name="stats",
         aliases=["cs"],
         description="Sends a embed with channel stats",
     )
     @commands.bot_has_guild_permissions(manage_channels=True)
-    async def channelstats(self, ctx):
+    async def stats(self, ctx):
         channel = ctx.channel
 
         embed = discord.Embed(
