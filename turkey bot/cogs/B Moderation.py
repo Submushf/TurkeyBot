@@ -49,7 +49,7 @@ class Moderation(commands.Cog):
     @commands.command(
         name="channelstats",
         aliases=["cs"],
-        description="Sends a nice fancy embed with some channel stats",
+        description="Sends a embed with channel stats",
     )
     @commands.bot_has_guild_permissions(manage_channels=True)
     async def channelstats(self, ctx):
