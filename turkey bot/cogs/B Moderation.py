@@ -16,13 +16,17 @@ class Moderation(commands.Cog):
     @commands.has_permissions(kick_members = True)
     async def kick(self, ctx, member : discord.Member):
         await member.kick()
-        await ctx.channel.send(f"{member.mention} was kicked from the server.")
+        embed = discord.Embed(color = 0x07C9F5 )
+        embed.add_field(name="🦶Kicked",value=f"{member.mention} was kicked from the server.",inline=True)
+        await ctx.send(embed=embed)
 
     @commands.command(aliases=['b'], description = "Ban members")
     @commands.has_permissions(ban_members = True)
     async def ban(self, ctx, member : discord.Member):
         await member.ban()
-        await ctx.channel.send(f"{member.mention} was banned from the server.")
+        embed = discord.Embed(color= 0x07C9F5)
+        embed.add_field(name="🔨Banned", value= f"{member.mention} was banned from the server.")
+        await ctx.send(embed=embed)
 
     @commands.command(aliases=['ub'], description = "UnBan members")
     async def unban(self, ctx,*, member):
@@ -34,7 +38,9 @@ class Moderation(commands.Cog):
 
             if (user.name, user.discriminator) == (member_name, member_discriminator):
                 await ctx.guild.unban(user)
-                await ctx.send(f'{user.mention} was unbanned.')
+                embed = discord.Embed(color = 0x07C9F5)
+                embed.add_field(name="📜Unbanned", value=f"{user.mention} was unbanned.")
+                await ctx.send(embed=embed)
                 return
 
     @commands.command(aliases=['ui'], description = "Shows User's Info ")
