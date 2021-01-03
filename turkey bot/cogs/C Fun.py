@@ -26,7 +26,7 @@ class Fun(commands.Cog):
                 r = await response.json()
                 r = r["body"][0]
                 embed= discord.Embed(color = 0x07C9F5)
-                embed.add_field(name="Joke's",value=f"\n**{r['setup']}**\n||{r['punchline']}||", inline=True)
+                embed.add_field(name="Joke-",value=f"\n**{r['setup']}**\n||{r['punchline']}||", inline=True)
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=['p'],description = "Pat a user with a Gif")
