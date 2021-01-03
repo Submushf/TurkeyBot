@@ -6,7 +6,7 @@ import random
 class Moderation(commands.Cog):
 
     def __init__(self, client):
-        self.client = client 
+        self.client=client 
 
 
     @commands.command(aliases=['c'], description = "clear's messages")
@@ -91,44 +91,6 @@ class Moderation(commands.Cog):
         embed.add_field(name="-Channel Hash", value=hash(channel), inline=True)
 
         await ctx.send(embed=embed)
-
-    @commands.command()
-    @commands.has_permissions(kick_members = True)
-    async def poll(self,ctx,client,message):
-
-        questions = [
-            "which channel should the poll be in?", 
-        ]
-
-        answers = []
-
-        def check(m):
-            return m.author == ctx.author and m.channel == ctx.channel
-
-        for i in questions:
-            await ctx.send(i)
-
-            try:
-                msg = await client.wait_for('message', timeout=15.0, check=check)
-            except asyncio.TimeoutError:
-                await ctx.send('you didnt asnwer in time, please be quicker next time!.')
-                return
-            else:
-                answers.append(msg.content)
-
-        try:
-            c_id = int(answers[0][2:-1])
-        except:
-            await ctx.send(f"You didnt mention the channel properly. Do it like this {ctx.channel.mention} next time.")
-            return
-
-        channel = client.get_channel(c_id)
-
-        embed = discord.Embed(title = "Poll", description = f"{message}", color = 0x7E07F5) 
-        embed.set_footer(icon_url="https://cdn.discordapp.com/attachments/768122587174797364/779768983439015966/icon-256x256.png",text= "Drape's bot")
-        msg = await ctx.channel.send(embed = embed)
-        await msg.add_reaction('👍')
-        await msg.add_reaction('👎')
 
 
 def setup(client):
