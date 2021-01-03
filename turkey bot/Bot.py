@@ -11,7 +11,7 @@ client.remove_command("help")
 async def ch_pr():
     await client.wait_until_ready()
 
-    statuses = ["❄️The snow fall", "🎳CODM", "g!help" ]  
+    statuses = ["❄️The snow fall", "🎮CODM", "g!help","😥Sad music","🤣Memes","😋Eating The best food in the world" ]  
 
     while not client.is_closed():
 
