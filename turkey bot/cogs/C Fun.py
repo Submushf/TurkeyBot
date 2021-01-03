@@ -11,7 +11,7 @@ class Fun(commands.Cog):
     @commands.command(
         name="dadjoke",
         description="Send a dad joke!",
-        aliases=['dadjokes']
+        aliases=['dadjokes','dj'] 
     )
     async def dadjoke(self, ctx):
         url = "https://dad-jokes.p.rapidapi.com/random/jokes"
