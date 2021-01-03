@@ -66,27 +66,27 @@ class Moderation(commands.Cog):
             description=f"{'**Category:** {}'.format(channel.category.name) if channel.category else 'This channel is not in a category'}",
             color=0x07C9F5,
         )
-        embed.add_field(name="▶Channel Guild", value=ctx.guild.name, inline=True)
-        embed.add_field(name="▶Channel Id", value=channel.id, inline=True)
+        embed.add_field(name="-Channel Guild", value=ctx.guild.name, inline=True)
+        embed.add_field(name="-Channel Id", value=channel.id, inline=True)
         embed.add_field(
-            name="▶Channel Topic",
+            name="-Channel Topic",
             value=f"{channel.topic if channel.topic else 'No topic.'}",
             inline=True,
         )
-        embed.add_field(name="▶Position", value=channel.position, inline=True)
+        embed.add_field(name="-Position", value=channel.position, inline=True)
         embed.add_field(
-            name="Channel Slowmode Delay", value=channel.slowmode_delay, inline=True
+            name="-Channel Slowmode Delay", value=channel.slowmode_delay, inline=True
         )
-        embed.add_field(name="▶Channel is nsfw?", value=channel.is_nsfw(), inline=True)
+        embed.add_field(name="-Channel is nsfw?", value=channel.is_nsfw(), inline=True)
         embed.add_field(
-            name="Channel Creation Time", value=channel.created_at, inline=True
+            name="-Creation Time", value=channel.created_at, inline=True
         )
         embed.add_field(
-            name="▶Permissions Synced",
+            name="-Permissions Synced",
             value=channel.permissions_synced,
             inline=True,
         )
-        embed.add_field(name="▶Channel Hash", value=hash(channel), inline=True)
+        embed.add_field(name="-Channel Hash", value=hash(channel), inline=True)
 
         await ctx.send(embed=embed)
 
