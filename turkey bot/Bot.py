@@ -5,7 +5,7 @@ import random
 import asyncio
 import os
 
-client = commands.Bot(command_prefix= ">", intents = discord.Intents.all())  
+client = commands.Bot(command_prefix= "g!", intents = discord.Intents.all())  
 client.remove_command("help")
 
 async def ch_pr():
