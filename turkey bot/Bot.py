@@ -18,7 +18,7 @@ async def ch_pr():
         status = random.choice(statuses) 
         await client.change_presence(activity=discord.Game(name=status)) 
 
-        await asyncio.sleep(130) 
+        await asyncio.sleep(120) 
 
 client.loop.create_task(ch_pr())
 
