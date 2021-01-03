@@ -26,7 +26,7 @@ class Fun(commands.Cog):
                 r = await response.json()
                 r = r["body"][0]
                 embed= discord.Embed(color = 0x07C9F5)
-                embed.add_field(name="Joke's",value=f"**{r['setup']}**\n||{r['punchline']}||", inline=True)
+                embed.add_field(name="Joke's",value=f"\n**{r['setup']}**\n||{r['punchline']}||", inline=True)
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=['p'],description = "Pat a user with a Gif")
@@ -47,7 +47,7 @@ class Fun(commands.Cog):
         embed.set_image(url= 'https://media.giphy.com/media/u2LJ0n4lx6jF6/giphy.gif')
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=['p'],description="create a poll")
+    @commands.command(aliases=['cp'],description="create a poll")
     async def poll(self,ctx,*,message):
         embed = discord.Embed(title = "Poll", description = f"{message}", color = 0x7E07F5) 
         embed.set_footer(icon_url="https://cdn.discordapp.com/attachments/768122587174797364/779768983439015966/icon-256x256.png",text= "Drape's bot")
