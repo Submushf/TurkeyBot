@@ -58,11 +58,13 @@ class Help(commands.Cog):
     @commands.command(description = "Show's The bot status.", aliases = ['st'])
     async def status(self, ctx):
         embed = discord.Embed(titile = "Status", color = 0x07C9F5) 
-        embed.add_field(name= "status", value=f"-Online,\nThe bot is ready for use.", inline=True) 
+        embed.add_field(name= "Status", value=f"-Online,\n-The bot is ready for use.", inline=True) 
         embed.set_image(url= 'https://media.discordapp.net/attachments/781888173286227970/786908540471869440/3863_gearz.gif') 
         await ctx.send(embed=embed)
 
-
+    @commands.command(description="Test")
+    async def Test(self, ctx):
+        await ctx.send("online") 
 
 def setup(client):
     client.add_cog(Help(client))
