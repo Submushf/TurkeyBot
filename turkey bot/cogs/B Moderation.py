@@ -75,9 +75,9 @@ class Moderation(commands.Cog):
         )
         embed.add_field(name="-Position", value=channel.position, inline=True)
         embed.add_field(
-            name="-Channel Slowmode Delay", value=channel.slowmode_delay, inline=True
+            name="-Slowmode Delay", value=channel.slowmode_delay, inline=True
         )
-        embed.add_field(name="-Channel is nsfw?", value=channel.is_nsfw(), inline=True)
+        embed.add_field(name="-nsfw?", value=channel.is_nsfw(), inline=True)
         embed.add_field(
             name="-Creation Time", value=channel.created_at, inline=True
         )
