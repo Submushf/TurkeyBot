@@ -35,7 +35,7 @@ class Fun(commands.Cog):
         embed.set_image(url= 'https://media.giphy.com/media/5tmRHwTlHAA9WkVxTU/giphy.gif')
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=['con'],description = "congratulate a user with a Gif")
+    @commands.command(aliases=['co'],description = "congratulate a user with a Gif")
     async def congrats(self, ctx):
         embed = discord.Embed(color = 0x07C9F5)
         embed.set_image(url= 'https://media.giphy.com/media/g9582DNuQppxC/giphy.gif')
@@ -49,7 +49,7 @@ class Fun(commands.Cog):
 
     @commands.command(aliases=['cp'],description="create a poll")
     async def poll(self,ctx,*,message):
-        embed = discord.Embed(title = "Poll", description = f"{message}", color = 0x7E07F5) 
+        embed = discord.Embed(title = "Poll", description = f"{message}", color = 0x07C9F5) 
         msg = await ctx.channel.send(embed = embed)
         await msg.add_reaction('👍')
         await msg.add_reaction('👎')
