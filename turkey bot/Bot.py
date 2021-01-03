@@ -8,10 +8,14 @@ import os
 client = commands.Bot(command_prefix= "g!", intents = discord.Intents.all())  
 client.remove_command("help")
 
+@client.event
+async def on_ready():
+    print("-------online-------")  
+
 async def ch_pr():
     await client.wait_until_ready()
 
-    statuses = ["❄️The snow fall", "🎮CODM", "g!help","😥Sad music","🤣Memes","😋Eating The best food in the world" ]  
+    statuses = ["🎮Call of Duty Moblie", "g!help","😥Sad music","🤣Memes","😋Eating The best food in the world" ]  
 
     while not client.is_closed():
 
