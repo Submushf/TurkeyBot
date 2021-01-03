@@ -51,7 +51,7 @@ class Help(commands.Cog):
             #commandList += "\n"
 
             helpembed.add_field(name=cog, value= commandList, inline= False) 
-            helpembed.set_footer(text=f"Prefix - g!") 
+            helpembed.set_footer(text=f"Prefix - >") 
 
         await ctx.send(embed = helpembed) 
 

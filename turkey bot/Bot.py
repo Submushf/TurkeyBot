@@ -2,17 +2,32 @@ import discord
 from discord.ext import commands
 import datetime
 import random
+import asyncio
 import os
 
-client = commands.Bot(command_prefix= "g!", intents = discord.Intents.all())  
+client = commands.Bot(command_prefix= ">", intents = discord.Intents.all())  
 client.remove_command("help")
 
-@client.event
-async def on_ready():
-    await client.change_presence(status = discord.Status.online, activity= discord.Activity(
-        type= discord.ActivityType.watching, name= "❄️The snow fall" 
-    )) 
-    print("bot is ready")
+async def ch_pr():
+    await client.wait_until_ready()
+
+    statuses = ["❄️The snow fall", "🎳CODM", ">help" ]  
+
+    while not client.is_closed():
+
+        status = random.choice(statuses) 
+        await client.change_presence(activity=discord.Game(name=status)) 
+
+        await asyncio.sleep(130) 
+
+client.loop.create_task(ch_pr())
+
+#@client.event
+#async def on_ready():
+   # await client.change_presence(status = discord.Status.online, activity= discord.Activity(
+  #      type= discord.ActivityType.watching, name= "❄️The snow fall" 
+ #   )) 
+#    print("bot is ready")
 
 
 @client.command()

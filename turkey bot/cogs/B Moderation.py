@@ -40,7 +40,7 @@ class Moderation(commands.Cog):
     @commands.command(aliases=['ui'], description = "Shows User's Info ")
     @commands.has_permissions(kick_members=True)
     async def info(self, ctx, member : discord.Member):
-        embed = discord.Embed(title = member.name , description = f'User: {member.mention}' , color = 0x7E07F5)
+        embed = discord.Embed(title = member.name , description = f'User: {member.mention}' , color = 0x07C9F5)
         embed.add_field(name= 'ID', value= member.id, inline = True)
         embed.set_thumbnail(url= member.avatar_url)
         embed.set_footer(icon_url= ctx.author.avatar_url , text = f"Requested by {ctx.author.name}" )
@@ -58,30 +58,30 @@ class Moderation(commands.Cog):
         embed = discord.Embed(
             title=f"Stats for **{channel.name}**",
             description=f"{'Category: {}'.format(channel.category.name) if channel.category else 'This channel is not in a category'}",
-            color=0x7E07F5,
+            color=0x07C9F5,
         )
-        embed.add_field(name="Channel Guild", value=ctx.guild.name, inline=False)
-        embed.add_field(name="Channel Id", value=channel.id, inline=False)
+        embed.add_field(name="Channel Guild", value=ctx.guild.name, inline=True)
+        embed.add_field(name="Channel Id", value=channel.id, inline=True)
         embed.add_field(
             name="Channel Topic",
             value=f"{channel.topic if channel.topic else 'No topic.'}",
-            inline=False,
+            inline=True,
         )
-        embed.add_field(name="Channel Position", value=channel.position, inline=False)
+        embed.add_field(name="Channel Position", value=channel.position, inline=True)
         embed.add_field(
-            name="Channel Slowmode Delay", value=channel.slowmode_delay, inline=False
+            name="Channel Slowmode Delay", value=channel.slowmode_delay, inline=True
         )
-        embed.add_field(name="Channel is nsfw?", value=channel.is_nsfw(), inline=False)
-        embed.add_field(name="Channel is news?", value=channel.is_news(), inline=False)
+        embed.add_field(name="Channel is nsfw?", value=channel.is_nsfw(), inline=True)
+        embed.add_field(name="Channel is news?", value=channel.is_news(), inline=True)
         embed.add_field(
-            name="Channel Creation Time", value=channel.created_at, inline=False
+            name="Channel Creation Time", value=channel.created_at, inline=True
         )
         embed.add_field(
             name="Channel Permissions Synced",
             value=channel.permissions_synced,
-            inline=False,
+            inline=True,
         )
-        embed.add_field(name="Channel Hash", value=hash(channel), inline=False)
+        embed.add_field(name="Channel Hash", value=hash(channel), inline=True)
 
         await ctx.send(embed=embed)
 

@@ -50,7 +50,7 @@ class Fun(commands.Cog):
     async def suggest(self,ctx):
         suggested =  random.choice(cmd)
 
-        await ctx.send(f"**Today's suggestion's : {suggested}**")
+        await ctx.send(f"**Today's suggestion For you: {suggested}**")
         await ctx.send(f"Next suggestion available in 12 hours") 
 
 
@@ -61,7 +61,8 @@ cmd = [
     "https://www.youtube.com/watch?v=9DWDJmC1Pkw","https://www.youtube.com/watch?v=VQJ40f_JdOI","https://www.youtube.com/watch?v=OqT8QK84KBc","https://www.youtube.com/watch?v=x-brv0EaPuE","https://www.youtube.com/watch?v=Zo_Y-n__Cbc",
     "https://www.youtube.com/watch?v=DrwYZCN2__g","https://www.youtube.com/watch?v=06kqZVHCSIs","https://www.youtube.com/watch?v=8oU0LAKoAL0","https://www.youtube.com/watch?v=J5Rzr-GL50Y","https://www.gq.com/story/no-cry-challenge-sad-internet-videos",
     "https://www.youtube.com/watch?v=tlvO3LnPQR8","https://www.youtube.com/watch?v=GfFVJyDVZuQ&list=WL&index=22&t=112s","https://www.youtube.com/watch?v=f0j--Y6G4Fg&list=WL&index=21&t=10s", "https://www.youtube.com/watch?v=Kv-OdJLhfFI","https://www.youtube.com/watch?v=Kv-OdJLhfFI","https://www.youtube.com/watch?v=OYMJNDB-rx0","https://www.youtube.com/watch?v=fxO4DCEw1FY",
-    "https://www.youtube.com/watch?v=ftsBRXe_lhs","https://www.youtube.com/watch?v=HJjkw1kIgY0","https://www.youtube.com/watch?v=zBG8wsX3NkM"
+    "https://www.youtube.com/watch?v=ftsBRXe_lhs","https://www.youtube.com/watch?v=HJjkw1kIgY0","https://www.youtube.com/watch?v=zBG8wsX3NkM","https://youtu.be/biGHT89VsYo","https://youtu.be/-IIQIsZIo7o","https://youtu.be/8e1XX-ngJcc",
+    "https://youtu.be/0DAmWHxeoKw","https://youtu.be/Q3TYvvozc6s","https://youtu.be/3tND2re_D1A","https://youtu.be/F5naTTEkdAE"
 ]
 
 
