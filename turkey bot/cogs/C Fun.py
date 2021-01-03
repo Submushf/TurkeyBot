@@ -25,7 +25,9 @@ class Fun(commands.Cog):
             async with session.get(url, headers=headers) as response:
                 r = await response.json()
                 r = r["body"][0]
-                await ctx.send(f"**{r['setup']}**\n||{r['punchline']}||")
+                embed= discord.Embed(color = 0x07C9F5)
+                embed.add_field(name="here's a Joke",value=f"**{r['setup']}**\n||{r['punchline']}||", inline=True)
+                await ctx.send(embed=embed)
 
     @commands.command(aliases=['p'],description = "Pat a user with a Gif")
     async def pat(self, ctx):
