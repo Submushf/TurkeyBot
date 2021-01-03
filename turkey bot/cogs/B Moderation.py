@@ -92,7 +92,7 @@ class Moderation(commands.Cog):
 
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=['p'], description="create a poll")
+    @commands.command(aliases=['cp'], description="create a poll")
     async def poll(self,ctx,*,message):
         embed = discord.Embed(title = "Poll", description = f"{message}", color = 0x7E07F5) 
         embed.set_footer(icon_url="https://cdn.discordapp.com/attachments/768122587174797364/779768983439015966/icon-256x256.png",text= "Drape's bot")
