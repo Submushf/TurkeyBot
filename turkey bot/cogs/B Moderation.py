@@ -7,7 +7,7 @@ class Moderation(commands.Cog):
         self.client = client 
 
 
-    @commands.command(aliases=['purge'], description = "clear's messages")
+    @commands.command(aliases=['c'], description = "clear's messages")
     @commands.has_permissions(manage_messages = True)
     async def clear(self, ctx, amount=2):
         await ctx.channel.purge(limit = amount)

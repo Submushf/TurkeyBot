@@ -33,7 +33,7 @@ class Fun(commands.Cog):
         embed.set_image(url= 'https://media.giphy.com/media/5tmRHwTlHAA9WkVxTU/giphy.gif')
         await ctx.send(embed=embed)
 
-    @commands.command(aliases=['c'],description = "congratulate a user with a Gif")
+    @commands.command(aliases=['con'],description = "congratulate a user with a Gif")
     async def congrats(self, ctx):
         embed = discord.Embed(color = 0x07C9F5)
         embed.set_image(url= 'https://media.giphy.com/media/g9582DNuQppxC/giphy.gif')
