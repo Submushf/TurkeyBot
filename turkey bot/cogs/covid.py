@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import requests
+import wikipedia
 from discord.ext import commands
 
 
@@ -54,6 +55,19 @@ class others(commands.Cog):
             embed3 = discord.Embed(title="Invalid Country Name Or API Error! Try Again..!", colour=0x07C9F5, timestamp=ctx.message.created_at)
             embed3.set_author(name="Error!")
             await ctx.send(embed=embed3)
+
+    @commands.command(description="gives answer to questions.")
+    async def whatis(self,context, *, question):
+        try:
+            await context.send(wikipedia.summary(question, sentences=2))
+        except:
+            await context.send("Invalid command")
+
+    @commands.command(description="target the page from wikipedia")
+    async def link(self,context, *, target):
+        target_obj = wikipedia.page(target)
+        await context.send(target_obj.title)
+        await context.send(target_obj.url)
 
 
 def setup(bot):
