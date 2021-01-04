@@ -60,7 +60,7 @@ class others(commands.Cog):
     async def whatis(self,ctx, *, question):
         try:
             embed= discord.Embed(color=0x07C9F5)
-            embed.add_field(name="✔ Searched-",value=f"**{wikipedia.summary(question, sentences=2)}**", inline=True)
+            embed.add_field(name="✅ Searched-",value=f"**-{wikipedia.summary(question, sentences=2)}**", inline=True)
             await ctx.send(embed=embed)
         except:
             embed= discord.Embed(color=0x07C9F5)
