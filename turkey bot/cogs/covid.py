@@ -13,7 +13,7 @@ class others(commands.Cog):
     async def covid(self, ctx, *, countryName = None):
         try:
             if countryName is None:
-                embed=discord.Embed(title="This command is used like this: ```+covid [country]```", colour=0x07C9F5, timestamp=ctx.message.created_at)
+                embed=discord.Embed(title="This command is used like this: ```g!covid [country]```", colour=0x07C9F5, timestamp=ctx.message.created_at)
                 await ctx.send(embed=embed)
 
 
@@ -34,7 +34,7 @@ class others(commands.Cog):
                 totalTests = json_stats["totalTests"]
                 testsPerOneMillion = json_stats["testsPerOneMillion"]
 
-                embed2 = discord.Embed(title=f"**COVID-19 Status Of {country}**!", description="This Information Isn't Live Always, Hence It May Not Be Accurate!", colour=0x0000ff, timestamp=ctx.message.created_at)
+                embed2 = discord.Embed(title=f"**COVID-19 Status Of {country}**!", description="This Information Isn't Live Always, Hence It May Not Be Accurate!", colour=0x07C9F5, timestamp=ctx.message.created_at)
                 embed2.add_field(name="**Total Cases**", value=totalCases, inline=True)
                 embed2.add_field(name="**Today Cases**", value=todayCases, inline=True)
                 embed2.add_field(name="**Total Deaths**", value=totalDeaths, inline=True)
