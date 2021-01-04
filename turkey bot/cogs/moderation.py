@@ -86,6 +86,7 @@ class Moderation(commands.Cog):
             inline=True,
         )
         embed.add_field(name="-Channel Hash", value=hash(channel), inline=True)
+        embed.add_field(name="-Server bot", value="Studio Bot", inline=True)
 
         await ctx.send(embed=embed)
 
