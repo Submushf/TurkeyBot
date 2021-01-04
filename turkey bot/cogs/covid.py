@@ -2,6 +2,7 @@ import discord
 import asyncio
 import requests
 import wikipedia
+import urllib.parse, urllib.request, re
 from discord.ext import commands
 
 
@@ -73,6 +74,21 @@ class others(commands.Cog):
         embed= discord.Embed(title= f"{target_obj.title}: \n{target_obj.url}",color=0x07C9F5)
 #        embed.add_field(name="Done-", value=f"{target_obj.title} \n{target_obj.url}", inline=True)        
         await ctx.send(embed=embed)
+
+    @commands.command(description="search video from youtube")
+    async def youtube(self,ctx,*, search):
+        
+        query_string = urllib.parse.urlencode({
+            'search_query':search 
+        })
+        htm_context = urllib.request.urlopen(
+            'http://www.youtube.com/results?'+ query_string 
+        )
+        search_results = re.findall(f'href=\"\\/watch\\?v=(.{11})', htm_context.read().decode())
+        await ctx.send('http://www.youtube.com/watch?v=' + search_results[0])
+
+
+
 
 def setup(bot):
     bot.add_cog(others(bot))
