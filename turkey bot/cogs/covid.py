@@ -85,7 +85,7 @@ class others(commands.Cog):
             'http://www.youtube.com/results?'+ query_string 
         )
         search_results = re.findall(f'href=\"\\/watch\\?v=(.{11})', htm_context.read().decode())
-        await ctx.send('http://www.youtube.com/watch?v=' + search_results[0])
+        await ctx.send('http://www.youtube.com/watch?v=' + search_results[2]) 
 
 
 
