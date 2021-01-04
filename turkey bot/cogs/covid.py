@@ -57,17 +57,21 @@ class others(commands.Cog):
             await ctx.send(embed=embed3)
 
     @commands.command(description="gives answer to questions.")
-    async def whatis(self,context, *, question):
+    async def whatis(self,ctx, *, question):
         try:
-            await context.send(wikipedia.summary(question, sentences=2))
+            embed= discord.Embed(color=0x07C9F5)
+            embed.add_field(name="✔ Searched-",value=f"**{wikipedia.summary(question, sentences=2)}**", inline=True)
+            await ctx.send(embed=embed)
         except:
-            await context.send("Invalid command")
+            embed= discord.Embed(color=0x07C9F5)
+            embed.add_field(name="❌ Failed-", value=f"**Invalid command**", inline=True)
+            await ctx.send("Invalid command")
 
     @commands.command(description="target the page from wikipedia")
-    async def link(self,context, *, target):
+    async def link(self,ctx, *, target):
         target_obj = wikipedia.page(target)
-        await context.send(target_obj.title)
-        await context.send(target_obj.url)
+        await ctx.send(target_obj.title)
+        await ctx.send(target_obj.url)
 
 
 def setup(bot):
