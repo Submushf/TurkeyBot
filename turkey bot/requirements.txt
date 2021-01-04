@@ -3,6 +3,3 @@ datetime
 asyncio
 requests
 wikipedia
-urllib.parse
-urllib.request
-re
