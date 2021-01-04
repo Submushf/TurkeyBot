@@ -62,8 +62,8 @@ class Help(commands.Cog):
         embed.set_image(url= 'https://media.discordapp.net/attachments/781888173286227970/786908540471869440/3863_gearz.gif') 
         await ctx.send(embed=embed)
 
-    @commands.command(description="Test")
-    async def Test(self, ctx):
+    @commands.command(description="test the bot")
+    async def test(self, ctx):
         await ctx.send("online") 
 
 def setup(client):
