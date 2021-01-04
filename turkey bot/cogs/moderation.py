@@ -81,9 +81,6 @@ class Moderation(commands.Cog):
         )
         embed.add_field(name="-nsfw?", value=channel.is_nsfw(), inline=True)
         embed.add_field(
-            name="-Creation Time", value=channel.created_at, inline=True
-        )
-        embed.add_field(
             name="-Permissions Synced",
             value=channel.permissions_synced,
             inline=True,
