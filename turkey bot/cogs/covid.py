@@ -63,15 +63,15 @@ class others(commands.Cog):
             embed.add_field(name="✅ Searched-",value=f"``-{wikipedia.summary(question, sentences=2)}``", inline=True)
             await ctx.send(embed=embed)
         except:
-            embed= discord.Embed(title = "‎‎❌ Failed",color=0x07C9F5)
+            embed= discord.Embed(title = "‎‎❌ Invalid command",color=0x07C9F5)
 #            embed.add_field(name="❌ Failed-", value=f"**Invalid command**", inline=True)
             await ctx.send(embed=embed)
 
     @commands.command(description="target the page from wikipedia")
     async def link(self,ctx, *, target):
         target_obj = wikipedia.page(target)
-        embed= discord.Embed(color=0x07C9F5)
-        embed.add_field(name="Done-", value=f"{target_obj.title} \n{target_obj.url}", inline=True)        
+        embed= discord.Embed(title= f"{target_obj.title}: \n{target_obj.url}",color=0x07C9F5)
+#        embed.add_field(name="Done-", value=f"{target_obj.title} \n{target_obj.url}", inline=True)        
         await ctx.send(embed=embed)
 
 def setup(bot):
