@@ -59,7 +59,7 @@ class others(commands.Cog):
     @commands.command(description="gives answer to questions.")
     async def search(self,ctx, *, question):
         try:
-            embed= discord.Embed(color=0x07C9F5)
+            embed= discord.Embed(color=0x07C9F5,timestamp=ctx.message.created_at)
             embed.add_field(name="✅ Searched-",value=f"``-{wikipedia.summary(question, sentences=2)}``", inline=True)
             await ctx.send(embed=embed)
         except:
