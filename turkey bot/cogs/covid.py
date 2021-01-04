@@ -60,19 +60,19 @@ class others(commands.Cog):
     async def whatis(self,ctx, *, question):
         try:
             embed= discord.Embed(color=0x07C9F5)
-            embed.add_field(name="✅ Searched-",value=f"**-{wikipedia.summary(question, sentences=2)}**", inline=True)
+            embed.add_field(name="✅ Searched-",value=f"``-{wikipedia.summary(question, sentences=2)}``", inline=True)
             await ctx.send(embed=embed)
         except:
             embed= discord.Embed(color=0x07C9F5)
             embed.add_field(name="❌ Failed-", value=f"**Invalid command**", inline=True)
-            await ctx.send("Invalid command")
+            await ctx.send(embed=embed)
 
     @commands.command(description="target the page from wikipedia")
     async def link(self,ctx, *, target):
         target_obj = wikipedia.page(target)
-        await ctx.send(target_obj.title)
-        await ctx.send(target_obj.url)
-
+        embed= discord.Embed(color=0x07C9F5)
+        embed.add_field(name="Done-", value=f"{target_obj.title} \n{target_obj.url}", inline=True)        
+        await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(others(bot))
