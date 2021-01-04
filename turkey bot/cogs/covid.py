@@ -57,7 +57,7 @@ class others(commands.Cog):
             await ctx.send(embed=embed3)
 
     @commands.command(description="gives answer to questions.")
-    async def whatis(self,ctx, *, question):
+    async def search(self,ctx, *, question):
         try:
             embed= discord.Embed(color=0x07C9F5)
             embed.add_field(name="✅ Searched-",value=f"``-{wikipedia.summary(question, sentences=2)}``", inline=True)
@@ -68,7 +68,7 @@ class others(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command(description="target the page from wikipedia")
-    async def link(self,ctx, *, target):
+    async def find(self,ctx, *, target):
         target_obj = wikipedia.page(target)
         embed= discord.Embed(title= f"{target_obj.title}: \n{target_obj.url}",color=0x07C9F5)
 #        embed.add_field(name="Done-", value=f"{target_obj.title} \n{target_obj.url}", inline=True)        
