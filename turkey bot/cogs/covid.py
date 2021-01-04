@@ -4,16 +4,16 @@ import requests
 from discord.ext import commands
 
 
-class covid(commands.Cog):
+class others(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
 
-    @commands.command()
+    @commands.command(description="Shows the covid stats")
     async def covid(self, ctx, *, countryName = None):
         try:
             if countryName is None:
-                embed=discord.Embed(title="This command is used like this: ```+covid [country]```", colour=0xff0000, timestamp=ctx.message.created_at)
+                embed=discord.Embed(title="This command is used like this: ```+covid [country]```", colour=0x07C9F5, timestamp=ctx.message.created_at)
                 await ctx.send(embed=embed)
 
 
@@ -47,14 +47,14 @@ class covid(commands.Cog):
                 embed2.add_field(name="**Total Tests**", value=totalTests, inline=True)
                 embed2.add_field(name="**Tests Per One Million**", value=testsPerOneMillion, inline=True)
 
-                embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/564520348821749766/701422183217365052/2Q.png")
+                embed2.set_thumbnail(url="https://cdn.discordapp.com/attachments/781887772390719498/795612340116389898/covidbot.PNG")
                 await ctx.send(embed=embed2)
 
         except:
-            embed3 = discord.Embed(title="Invalid Country Name Or API Error! Try Again..!", colour=0xff0000, timestamp=ctx.message.created_at)
+            embed3 = discord.Embed(title="Invalid Country Name Or API Error! Try Again..!", colour=0x07C9F5, timestamp=ctx.message.created_at)
             embed3.set_author(name="Error!")
             await ctx.send(embed=embed3)
 
 
 def setup(bot):
-    bot.add_cog(covid(bot))
+    bot.add_cog(others(bot))
