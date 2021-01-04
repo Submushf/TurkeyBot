@@ -63,8 +63,8 @@ class others(commands.Cog):
             embed.add_field(name="✅ Searched-",value=f"``-{wikipedia.summary(question, sentences=2)}``", inline=True)
             await ctx.send(embed=embed)
         except:
-            embed= discord.Embed(color=0x07C9F5)
-            embed.add_field(name="❌ Failed-", value=f"**Invalid command**", inline=True)
+            embed= discord.Embed(title = "‎‎❌ Failed",color=0x07C9F5)
+#            embed.add_field(name="❌ Failed-", value=f"**Invalid command**", inline=True)
             await ctx.send(embed=embed)
 
     @commands.command(description="target the page from wikipedia")
